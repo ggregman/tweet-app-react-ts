@@ -19,8 +19,8 @@ export const TweetContainer = ({
           <TweetCard
             key={index}
             index={index}
-            handleDelete={() => handleDelete(index)}
-            handleAddLikes={() => handleAddLikes(tweet.id)}
+            handleDelete={handleDelete}
+            handleAddLikes={handleAddLikes}
             tweet={tweet}
           />
         );

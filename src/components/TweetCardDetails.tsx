@@ -1,4 +1,3 @@
-import React from "react";
 import { AiFillDelete, AiOutlineHeart } from "react-icons/ai";
 import { TweetType } from "../types/tweetType";
 

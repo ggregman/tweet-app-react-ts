@@ -20,8 +20,8 @@ export const TweetCard = ({
       <TweetCardDetails
         tweet={tweet}
         index={index}
-        handleDelete={()=>handleDelete(index)}
-        handleAddLikes={()=>handleAddLikes(tweet.id)}
+        handleDelete={handleDelete}
+        handleAddLikes={handleAddLikes}
       />
     </div>
   );

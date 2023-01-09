@@ -1,6 +1,4 @@
-import { DateTime } from "luxon";
-
-type UserType = {
+type TweetUserType = {
   avatarUrl: string;
   surname: string;
   name: string;
@@ -10,12 +8,12 @@ type UserType = {
 type TweetContentType = {
   imgUrl: string;
   text: string;
-  dateTime: any;
+  dateTime: string;
   likes: number;
 };
 
 export type TweetType = {
   id: number;
-  user: UserType;
+  user: TweetUserType;
   content: TweetContentType;
 };

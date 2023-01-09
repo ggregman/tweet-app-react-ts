@@ -37,7 +37,6 @@ export const useHandleTweets = ({
   const handleDelete = (index: number) => {
     const tempTweet = [...tweetList];
     tempTweet.splice(index, 1);
-    console.log("deleted"+index)
     setTweetList(tempTweet);
   };
 
