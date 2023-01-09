@@ -1,24 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { TweetContainer } from "./components/TweetContainer";
+import { useHandleTweets } from "./hooks/useHandleTweets";
+import { useTweets } from "./hooks/useTweets";
 
 function App() {
+  const { tweetList, setTweetList } = useTweets();
+  const { handleAddTweet, handleDelete, handleAddLikes } = useHandleTweets({
+    tweetList,
+    setTweetList,
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="title">Today's Tweets</h1>
+      <button onClick={handleAddTweet}>Add Tweet</button>
+      {tweetList && tweetList.length > 0 ? (
+        <TweetContainer
+          tweetList={tweetList}
+          handleDelete={handleDelete}
+          handleAddLikes={handleAddLikes}
+        />
+      ) : (
+        <h2 style={{ color: "white" }}>No tweets</h2>
+      )}
     </div>
   );
 }

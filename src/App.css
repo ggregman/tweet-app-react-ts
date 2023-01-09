@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  color:white;
+  background-color: #242d34;
 }
 
 .App-logo {
@@ -24,10 +26,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +33,47 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.tweetCard {
+  background-color: white;
+  max-width: 30em;
+  text-align: left;
+  color:#282c34;
+  width: 50%;
+  margin: 0 auto 2em;
+}
+
+.tweetDetails {
+  padding: 1em 2em 0.5em 2em;
+}
+
+.username {
+  opacity: 40%;
+  margin-top: 0;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+
+.container {
+  padding: 2em;
+}
+
+.dateTime {
+  opacity: 50%
+}
+
+.card_header {
+  position: relative;
+  display: flex;
+  gap: 1em;
+}
+
+.title {
+  margin-top: 0;
+  padding-top: 2em;
 }
