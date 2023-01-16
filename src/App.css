@@ -1,7 +1,13 @@
-.App {
+.App-dark {
   text-align: center;
-  color:white;
+  color: white;
   background-color: #242d34;
+}
+
+.App-light {
+  text-align: center;
+  color: #242d34;
+  background-color: white;
 }
 
 .App-logo {
@@ -35,11 +41,20 @@
   }
 }
 
-.tweetCard {
+.tweetCard-dark {
   background-color: white;
   max-width: 30em;
   text-align: left;
-  color:#282c34;
+  color: #282c34;
+  width: 50%;
+  margin: 0 auto 2em; 
+}
+
+.tweetCard-light {
+  background-color: #282c34;
+  max-width: 30em;
+  text-align: left;
+  color: white;
   width: 50%;
   margin: 0 auto 2em;
 }
@@ -64,7 +79,7 @@
 }
 
 .dateTime {
-  opacity: 50%
+  opacity: 50%;
 }
 
 .card_header {

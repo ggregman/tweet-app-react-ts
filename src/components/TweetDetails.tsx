@@ -1,18 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { AiFillDelete, AiOutlineHeart } from "react-icons/ai";
-import { TweetType } from "../types/tweetType";
+import { TweetContext } from "../context/TweetContext"
 
 type TweetCardDetailsProps = {
-  tweet: TweetType;
   index: number;
-  handleDelete: (index: number) => void;
+  handleDeleteTweet: (index: number) => void;
 };
 
-export const TweetCardDetails = ({
-  tweet,
+export const TweetDetails = ({
   index,
-  handleDelete,
+  handleDeleteTweet,
 }: TweetCardDetailsProps) => {
+  const tweetContext = useContext(TweetContext);
   const [isLiked, setIsLiked] = useState(false);
 
   const handleToggleLike = () => {
@@ -20,28 +19,13 @@ export const TweetCardDetails = ({
   };
   return (
     <div className="tweetDetails">
-      <div className="card_header">
-        <img
-          className="avatar"
-          src={tweet.user.avatarUrl}
-          alt={tweet.user.username}
-        />
-        <div className="tweetAuthor">
-          <h3 style={{ margin: 0 }}>
-            {tweet.user.name} {tweet.user.surname}
-          </h3>
-          <h4 className="username">@{tweet.user.username}</h4>
-        </div>
-      </div>
-      <p>{tweet.content.text}</p>
-      <p style={{ color: "#C0C0C0" }}> {tweet.content.dateTime}</p>
+      <p style={{ color: "#C0C0C0" }}> {tweetContext.content.dateTime}</p>
       <div style={{ alignContent: "bottom" }}>
         <div style={{ float: "right" }}>
-          <button onClick={() => handleDelete(index)}>
+          <button onClick={() => handleDeleteTweet(index)}>
             <AiFillDelete />
           </button>
         </div>
-
         <div
           style={{
             display: "flex",
@@ -59,7 +43,11 @@ export const TweetCardDetails = ({
           >
             <AiOutlineHeart />
           </button>
-          <p>{isLiked ? 1 + tweet.content.likes : tweet.content.likes}</p>
+          <p>
+            {isLiked
+              ? 1 + tweetContext.content.likes
+              : tweetContext.content.likes}
+          </p>
         </div>
       </div>
     </div>

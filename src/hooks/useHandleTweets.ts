@@ -34,11 +34,11 @@ export const useHandleTweets = ({
     setTweetList(tempTweet);
   };
 
-  const handleDelete = (index: number) => {
+  const handleDeleteTweet = (index: number) => {
     const tempTweet = [...tweetList];
     tempTweet.splice(index, 1);
     setTweetList(tempTweet);
   };
 
-  return { handleAddTweet, handleDelete };
+  return { handleAddTweet, handleDeleteTweet };
 };
