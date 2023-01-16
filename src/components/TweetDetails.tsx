@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AiFillDelete, AiOutlineHeart } from "react-icons/ai";
-import { TweetContext } from "../context/TweetContext"
+import { TweetContext } from "../context/TweetContext";
+import { Box, Text, Button } from "@chakra-ui/react";
 
 type TweetCardDetailsProps = {
   index: number;
@@ -18,15 +19,15 @@ export const TweetDetails = ({
     setIsLiked(!isLiked);
   };
   return (
-    <div className="tweetDetails">
-      <p style={{ color: "#C0C0C0" }}> {tweetContext.content.dateTime}</p>
-      <div style={{ alignContent: "bottom" }}>
-        <div style={{ float: "right" }}>
-          <button onClick={() => handleDeleteTweet(index)}>
+    <Box className="tweetDetails">
+      <Text style={{ color: "#C0C0C0" }}> {tweetContext.content.dateTime}</Text>
+      <Box style={{ alignContent: "bottom" }}>
+        <Box style={{ float: "right" }}>
+          <Button onClick={() => handleDeleteTweet(index)}>
             <AiFillDelete />
-          </button>
-        </div>
-        <div
+          </Button>
+        </Box>
+        <Box
           style={{
             display: "flex",
             position: "relative",
@@ -34,7 +35,7 @@ export const TweetDetails = ({
             alignItems: "center",
           }}
         >
-          <button
+          <Button
             style={{
               backgroundColor: isLiked === true ? "red" : "white",
               cursor: "pointer",
@@ -42,14 +43,14 @@ export const TweetDetails = ({
             onClick={handleToggleLike}
           >
             <AiOutlineHeart />
-          </button>
-          <p>
+          </Button>
+          <Text>
             {isLiked
               ? 1 + tweetContext.content.likes
               : tweetContext.content.likes}
-          </p>
-        </div>
-      </div>
-    </div>
+          </Text>
+        </Box>
+      </Box>
+    </Box>
   );
 };

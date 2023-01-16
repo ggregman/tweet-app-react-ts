@@ -1,3 +1,4 @@
+import { Box } from "@chakra-ui/react";
 import { TweetType } from "../types/tweetType";
 import { TweetCard } from "./TweetCard";
 
@@ -11,7 +12,7 @@ export const TweetContainer = ({
   handleDeleteTweet,
 }: TweetContainerProps) => {
   return (
-    <div className="container">
+    <Box className="container">
       {tweetList.map((tweet, index) => {
         return (
           <TweetCard
@@ -22,6 +23,6 @@ export const TweetContainer = ({
           />
         );
       })}
-    </div>
+    </Box>
   );
 };

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { Button } from "@chakra-ui/button";
+import { Heading } from "@chakra-ui/layout";
+import { Box } from "@chakra-ui/react";
 import "./App.css";
 import { TweetContainer } from "./components/TweetContainer";
-import { ThemeContext } from "./context/ThemeContext";
 import { useHandleTweets } from "./hooks/useHandleTweets";
 import { useTweets } from "./hooks/useTweets";
 
@@ -12,25 +13,23 @@ function App() {
     setTweetList,
   });
 
-  const [theme, setTheme] = useState(true);
-
-  const handleToggleTheme = () => {
-    setTheme(!theme);
-  };
-
   return (
-    <ThemeContext.Provider value={theme}>
-      <div className={`App-${theme ? "dark" : "light"}`}>
-        <button onClick={handleToggleTheme}>Toggle dark mode</button>
-        <h1 className="title">Today's Tweets</h1>
-        <button onClick={handleAddTweet}>Add Tweet</button>
-        {tweetList && tweetList.length > 0 ? (
-          <TweetContainer tweetList={tweetList} handleDeleteTweet={handleDeleteTweet} />
-        ) : (
-          <h2 style={{ color: "white" }}>No tweets</h2>
-        )}
-      </div>
-    </ThemeContext.Provider>
+    <Box className={`App-dark`}>
+      <Heading as={"h1"} className="title">
+        Today's Tweets
+      </Heading>
+      <Button onClick={handleAddTweet}>Add Tweet</Button>
+      {tweetList && tweetList.length > 0 ? (
+        <TweetContainer
+          tweetList={tweetList}
+          handleDeleteTweet={handleDeleteTweet}
+        />
+      ) : (
+        <Heading as={"h2"} style={{ color: "white" }}>
+          No tweets
+        </Heading>
+      )}
+    </Box>
   );
 }
 
