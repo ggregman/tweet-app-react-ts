@@ -40,13 +40,5 @@ export const useHandleTweets = ({
     setTweetList(tempTweet);
   };
 
-  const handleAddLikes = (id: number) => {
-    const tempTweet = [...tweetList];
-    tempTweet.map((tweet) =>
-      tweet.id === id ? { ...tweet, likes: tweet.content.likes++ } : tweet
-    );
-    setTweetList(tempTweet);
-  };
-
-  return { handleAddTweet, handleDelete, handleAddLikes };
+  return { handleAddTweet, handleDelete };
 };

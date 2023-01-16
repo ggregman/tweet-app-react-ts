@@ -5,7 +5,7 @@ import { useTweets } from "./hooks/useTweets";
 
 function App() {
   const { tweetList, setTweetList } = useTweets();
-  const { handleAddTweet, handleDelete, handleAddLikes } = useHandleTweets({
+  const { handleAddTweet, handleDelete } = useHandleTweets({
     tweetList,
     setTweetList,
   });
@@ -18,7 +18,6 @@ function App() {
         <TweetContainer
           tweetList={tweetList}
           handleDelete={handleDelete}
-          handleAddLikes={handleAddLikes}
         />
       ) : (
         <h2 style={{ color: "white" }}>No tweets</h2>

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { AiFillDelete, AiOutlineHeart } from "react-icons/ai";
 import { TweetType } from "../types/tweetType";
 
@@ -5,10 +6,18 @@ type TweetCardDetailsProps = {
   tweet: TweetType;
   index: number;
   handleDelete: (index: number) => void;
-  handleAddLikes: (id: number) => void
-}
+};
 
-export const TweetCardDetails = ({ tweet,index, handleDelete, handleAddLikes }: TweetCardDetailsProps) => {
+export const TweetCardDetails = ({
+  tweet,
+  index,
+  handleDelete,
+}: TweetCardDetailsProps) => {
+  const [isLiked, setIsLiked] = useState(false);
+
+  const handleToggleLike = () => {
+    setIsLiked(!isLiked);
+  };
   return (
     <div className="tweetDetails">
       <div className="card_header">
@@ -28,7 +37,7 @@ export const TweetCardDetails = ({ tweet,index, handleDelete, handleAddLikes }: 
       <p style={{ color: "#C0C0C0" }}> {tweet.content.dateTime}</p>
       <div style={{ alignContent: "bottom" }}>
         <div style={{ float: "right" }}>
-          <button onClick={()=>handleDelete(index)}>
+          <button onClick={() => handleDelete(index)}>
             <AiFillDelete />
           </button>
         </div>
@@ -41,10 +50,16 @@ export const TweetCardDetails = ({ tweet,index, handleDelete, handleAddLikes }: 
             alignItems: "center",
           }}
         >
-          <button onClick={()=>handleAddLikes(tweet.id)}>
+          <button
+            style={{
+              backgroundColor: isLiked === true ? "red" : "white",
+              cursor: "pointer",
+            }}
+            onClick={handleToggleLike}
+          >
             <AiOutlineHeart />
           </button>
-          <p>{tweet.content.likes}</p>
+          <p>{isLiked ? 1 + tweet.content.likes : tweet.content.likes}</p>
         </div>
       </div>
     </div>

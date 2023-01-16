@@ -5,14 +5,12 @@ type TweetCardProps = {
   tweet: TweetType;
   index: number;
   handleDelete: (index: number) => void;
-  handleAddLikes: (id: number) => void;
 };
 
 export const TweetCard = ({
   tweet,
   index,
   handleDelete,
-  handleAddLikes,
 }: TweetCardProps) => {
   return (
    <div className="tweetCard">
@@ -21,7 +19,6 @@ export const TweetCard = ({
         tweet={tweet}
         index={index}
         handleDelete={handleDelete}
-        handleAddLikes={handleAddLikes}
       />
     </div>
   );

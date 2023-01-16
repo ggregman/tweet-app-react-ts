@@ -4,13 +4,11 @@ import { TweetCard } from "./TweetCard";
 type TweetContainerProps = {
   tweetList: TweetType[];
   handleDelete: (index: number) => void;
-  handleAddLikes: (id: number) => void;
 };
 
 export const TweetContainer = ({
   tweetList,
   handleDelete,
-  handleAddLikes,
 }: TweetContainerProps) => {
   return (
     <div className="container">
@@ -20,7 +18,6 @@ export const TweetContainer = ({
             key={index}
             index={index}
             handleDelete={handleDelete}
-            handleAddLikes={handleAddLikes}
             tweet={tweet}
           />
         );
