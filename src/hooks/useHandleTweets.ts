@@ -10,9 +10,10 @@ export const useHandleTweets = ({
   tweetList,
   setTweetList,
 }: useHandleTweetsProps) => {
+
   const handleAddTweet = () => {
     const tempTweet = [...tweetList];
-    tempTweet.push({
+    tempTweet.unshift({
       id: Math.floor(Math.random() * 1000),
       user: {
         avatarUrl:
@@ -34,11 +35,5 @@ export const useHandleTweets = ({
     setTweetList(tempTweet);
   };
 
-  const handleDeleteTweet = (index: number) => {
-    const tempTweet = [...tweetList];
-    tempTweet.splice(index, 1);
-    setTweetList(tempTweet);
-  };
-
-  return { handleAddTweet, handleDeleteTweet };
+  return { handleAddTweet };
 };

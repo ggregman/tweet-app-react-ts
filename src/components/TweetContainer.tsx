@@ -1,28 +1,18 @@
-import { Box } from "@chakra-ui/react";
-import { TweetType } from "../types/tweetType";
+import { Center, VStack } from "@chakra-ui/react";
+import { useContext } from "react";
+import TweetContext from "../context/TweetContext";
 import { TweetCard } from "./TweetCard";
 
-type TweetContainerProps = {
-  tweetList: TweetType[];
-  handleDeleteTweet: (index: number) => void;
-};
+export const TweetContainer = () => {
+  const { tweetList } = useContext(TweetContext);
 
-export const TweetContainer = ({
-  tweetList,
-  handleDeleteTweet,
-}: TweetContainerProps) => {
   return (
-    <Box className="container">
-      {tweetList.map((tweet, index) => {
-        return (
-          <TweetCard
-            key={index}
-            index={index}
-            handleDeleteTweet={handleDeleteTweet}
-            tweet={tweet}
-          />
-        );
-      })}
-    </Box>
+    <Center>
+      <VStack maxW="30em" m="2em" spacing="0">
+        {tweetList.map((_, index) => {
+          return <TweetCard key={index} index={index} />;
+        })}
+      </VStack>
+    </Center>
   );
 };

@@ -1,8 +1,12 @@
-import { useContext } from "react";
-import { TweetContext } from "../context/TweetContext";
 import { Box } from "@chakra-ui/react";
+import { useContext } from "react";
+import TweetContext from "../context/TweetContext";
 
-export const TweetContent = () => {
-  const tweetContext = useContext(TweetContext);
-  return <Box>{tweetContext.content.text}</Box>;
+type TweetContentProps = {
+  index: number;
+};
+
+export const TweetContent = ({ index }: TweetContentProps) => {
+  const { tweetList } = useContext(TweetContext);
+  return <Box>{tweetList[index].content.text}</Box>;
 };
