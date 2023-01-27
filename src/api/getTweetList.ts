@@ -1,6 +1,6 @@
-import { tweetMock } from "./tweetMock";
+import axios from "axios";
 
-export const getTweetList = () => {
-  console.log("chiamata fake API")
-  return tweetMock;
+export const getTweetList = async () => {
+  const { data } = await axios.get("http://localhost:3004/tweets");
+  return data;
 };

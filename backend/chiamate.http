@@ -1,0 +1,31 @@
+@id=1
+
+GET http://localhost:3010/tweets HTTP/1.1
+####
+
+//singolo elemento
+GET http://localhost:3010/posts/{{id}} HTTP/1.1
+####
+
+##post elemento
+POST http://localhost:3010/posts HTTP/1.1
+Content-Type: application/json
+
+{
+       
+        "user": {
+          "avatarUrl":
+            "https://i.pravatar.cc/100",
+          "surname": "Rossi",
+          "name": "Mario",
+          "username": "rossimario69"
+        },
+        "content": {
+          "imgUrl":
+            "https://www.mindmilano.it/wp-content/uploads/2022/04/Gateway-Square-Home.jpg",
+          "text": "Learning how to extract components into reusable pieces while gazing at the sunset. What could go wrong?",
+          "dateTime":"12:30 PM · 2022 Jan 24",
+          "likes": 249
+        }
+
+}

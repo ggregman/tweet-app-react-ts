@@ -1,22 +1,33 @@
 import { Button } from "@chakra-ui/button";
 import { Heading } from "@chakra-ui/layout";
-import { Center } from "@chakra-ui/react";
-import { useState } from "react";
+import { Center, Spinner } from "@chakra-ui/react";
 import { BiRefresh } from "react-icons/bi";
-import { getTweetList } from "./api/getTweetList";
 import "./App.css";
 import { TweetContainer } from "./components/TweetContainer";
 import TweetContext from "./context/TweetContext";
 import { useHandleTweets } from "./hooks/useHandleTweets";
-import { TweetType } from "./types/tweetType";
+import { useTweets } from "./hooks/useTweets";
 
 function App() {
-  const [tweetList, setTweetList] = useState<TweetType[]>(getTweetList());
-
-  const { handleAddTweet } = useHandleTweets({ tweetList, setTweetList });
+  const {
+    tweetList,
+    setTweetList,
+    isLoadingTweets,
+    setIsLoadingTweets,
+    error,
+    fetchData,
+  } = useTweets();
+  const { handleDeleteTweet, handleAddTweet, isLoadingPostRequest } =
+    useHandleTweets({
+      tweetList,
+      setTweetList,
+      setIsLoadingTweets,
+    });
 
   return (
-    <TweetContext.Provider value={{ tweetList, setTweetList }}>
+    <TweetContext.Provider
+      value={{ tweetList, setTweetList, handleDeleteTweet }}
+    >
       <Center>
         <Heading as={"h1"}>Today's Tweets</Heading>
         <Button
@@ -25,12 +36,29 @@ function App() {
           _hover={{ cursor: "pointer", bg: "#1DA1F2", color: "#F5F8FA" }}
           color="#1DA1F2"
           ml="1em"
-          onClick={handleAddTweet}
+          onClick={fetchData}
         >
           <BiRefresh size="1.5em" />
         </Button>
       </Center>
-      {tweetList && tweetList.length > 0 ? (
+      <Center>
+        <Button
+          rounded="100"
+          p="0.5em"
+          _hover={{ cursor: "pointer", bg: "#1DA1F2", color: "#F5F8FA" }}
+          color="#1DA1F2"
+          ml="1em"
+          onClick={handleAddTweet}
+          fontWeight="semibold"
+        >
+          Add Tweet
+        </Button>
+      </Center>
+      {(isLoadingTweets || isLoadingPostRequest) && !error ? (
+        <Center>
+          <Spinner color="#1DA1F2" w="3em" h="3em" />
+        </Center>
+      ) : tweetList && tweetList.length > 0 ? (
         <TweetContainer />
       ) : (
         <Center>

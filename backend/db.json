@@ -1,0 +1,79 @@
+{
+  "tweets": [
+    {
+      "id": 1,
+      "user": {
+        "avatarUrl": "https://i.pravatar.cc/100",
+        "surname": "Bugatti",
+        "name": "Emma",
+        "username": "emmabugatti"
+      },
+      "content": {
+        "imgUrl": "http://wips.plug.it/cips/paginegialle.it/magazine/cms/2022/01/cane-di-razza.jpg?w=768&h=432&a=c",
+        "text": "Learning how to extract components into reusable pieces while gazing at the sunset. What could go wrong?",
+        "dateTime": "12:30 PM · 2022 Jan 24",
+        "likes": 500
+      }
+    },
+    {
+      "id": 2,
+      "user": {
+        "avatarUrl": "https://i.pravatar.cc/100",
+        "surname": "Ferrari",
+        "name": "Enzo",
+        "username": "enzoferrari"
+      },
+      "content": {
+        "imgUrl": "https://static.nationalgeographic.it/files/styles/image_3200/public/gettyimages-660629130_1.jpg?w=1600",
+        "text": "Learning how to extract components into reusable pieces while gazing at the sunset. What could go wrong?",
+        "dateTime": "12:30 PM · 2022 Jan 24",
+        "likes": 20
+      }
+    },
+    {
+      "id": 3,
+      "user": {
+        "avatarUrl": "https://i.pravatar.cc/100",
+        "surname": "Rossi",
+        "name": "Mario",
+        "username": "rossimario69"
+      },
+      "content": {
+        "imgUrl": "https://www.mindmilano.it/wp-content/uploads/2022/04/Gateway-Square-Home.jpg",
+        "text": "Learning how to extract components into reusable pieces while gazing at the sunset. What could go wrong?",
+        "dateTime": "12:30 PM · 2022 Jan 24",
+        "likes": 249
+      }
+    },
+    {
+      "id": 414,
+      "user": {
+        "avatarUrl": "https://cdn2.iconfinder.com/data/icons/social-flat-buttons-3/512/anonymous-512.png",
+        "surname": "User",
+        "name": "Temporary",
+        "username": "temporaryuser"
+      },
+      "content": {
+        "imgUrl": "https://www.gamesoul.it/wp-content/uploads/2020/01/kobe-bryant-nba-2k17.jpg",
+        "text": "Learning how to extract components into reusable pieces while gazing at the sunset. What could go wrong?",
+        "dateTime": "08:58 PM · 2023 Jan, 27",
+        "likes": 45
+      }
+    },
+    {
+      "id": 667,
+      "user": {
+        "avatarUrl": "https://cdn2.iconfinder.com/data/icons/social-flat-buttons-3/512/anonymous-512.png",
+        "surname": "User",
+        "name": "Temporary",
+        "username": "temporaryuser"
+      },
+      "content": {
+        "imgUrl": "https://www.gamesoul.it/wp-content/uploads/2020/01/kobe-bryant-nba-2k17.jpg",
+        "text": "Learning how to extract components into reusable pieces while gazing at the sunset. What could go wrong?",
+        "dateTime": "09:04 PM · 2023 Jan, 27",
+        "likes": 69
+      }
+    }
+  ]
+}

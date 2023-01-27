@@ -9,13 +9,7 @@ type TweetCardDetailsProps = {
 };
 
 export const TweetDetails = ({ index }: TweetCardDetailsProps) => {
-  const { tweetList, setTweetList } = useContext(TweetContext);
-
-  const handleDeleteTweet = (index: number) => {
-    const tempArray = [...tweetList];
-    tempArray.splice(index, 1);
-    setTweetList(tempArray);
-  };
+  const { tweetList, handleDeleteTweet } = useContext(TweetContext);
 
   const [isLiked, setIsLiked] = useState(false);
 
