@@ -1,26 +1,24 @@
 import { Heading, HStack, Image, Text, VStack } from "@chakra-ui/react";
-import { useContext } from "react";
-import TweetContext from "../context/TweetContext";
+import { TweetType } from "../types/tweetType";
 
 type TweetUserProps = {
-  index: number;
+  tweet: TweetType;
 };
 
-export const TweetUser = ({ index }: TweetUserProps) => {
-  const { tweetList } = useContext(TweetContext);
+export const TweetUser = ({ tweet }: TweetUserProps) => {
   return (
     <HStack mb="1em">
       <Image
         maxW="4em"
         rounded="100%"
-        src={tweetList[index].user.avatarUrl}
-        alt={tweetList[index].user.username}
+        src={tweet.user.avatarUrl}
+        alt={tweet.user.username}
       />
       <VStack placeItems="start">
         <Heading as={"h3"} style={{ margin: 0 }}>
-          {tweetList[index].user.name} {tweetList[index].user.surname}
+          {tweet.user.name} {tweet.user.surname}
         </Heading>
-        <Text color="#4a4e51">@{tweetList[index].user.username}</Text>
+        <Text color="#4a4e51">@{tweet.user.username}</Text>
       </VStack>
     </HStack>
   );

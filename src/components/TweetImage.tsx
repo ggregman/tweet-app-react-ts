@@ -1,20 +1,17 @@
 import { Image } from "@chakra-ui/react";
-import { useContext } from "react";
-import TweetContext from "../context/TweetContext";
+import { TweetType } from "../types/tweetType";
 
 type TweetImageProps = {
-  index: number;
+  tweet: TweetType;
 };
 
-export const TweetImage = ({ index }: TweetImageProps) => {
-  const { tweetList } = useContext(TweetContext);
-
+export const TweetImage = ({ tweet }: TweetImageProps) => {
   return (
     <Image
-      rounded='2em'
+      rounded="2em"
       width="100%"
-      src={tweetList[index].content.imgUrl}
-      alt={tweetList[index].user.username}
+      src={tweet.content.imgUrl}
+      alt={tweet.user.username}
     />
   );
 };

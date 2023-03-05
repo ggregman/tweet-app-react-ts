@@ -1,27 +1,34 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FaRegTrashAlt } from "react-icons/fa";
-import TweetContext from "../context/TweetContext";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import { TweetType } from "../types/tweetType";
+import { deleteTweet } from "../api/deleteTweet";
+
 
 type TweetCardDetailsProps = {
-  index: number;
+  tweet: TweetType;
 };
 
-export const TweetDetails = ({ index }: TweetCardDetailsProps) => {
-  const { tweetList, handleDeleteTweet } = useContext(TweetContext);
-
+export const TweetDetails = ({ tweet }: TweetCardDetailsProps) => {
   const [isLiked, setIsLiked] = useState(false);
 
   const handleToggleLike = () => {
     setIsLiked(!isLiked);
   };
 
+  const queryClient = useQueryClient();
+
+  const deleteTweet = useMutation(deleteTweet, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("tweetList");
+    },
+  });
+
   return (
     <Box>
-      <Text style={{ color: "#C0C0C0" }}>
-        {tweetList[index].content.dateTime}
-      </Text>
+      <Text style={{ color: "#C0C0C0" }}>{tweet.content.dateTime}</Text>
       <Flex justifyContent="space-between" alignContent="center">
         <Box
           style={{
@@ -44,9 +51,7 @@ export const TweetDetails = ({ index }: TweetCardDetailsProps) => {
             <AiOutlineHeart size="1.5em" />
           </Button>
           <Text color={isLiked ? "#f91880" : "gray"}>
-            {isLiked
-              ? 1 + tweetList[index].content.likes
-              : tweetList[index].content.likes}
+            {isLiked ? 1 + tweet.content.likes : tweet.content.likes}
           </Text>
         </Box>
         <Box
@@ -64,7 +69,7 @@ export const TweetDetails = ({ index }: TweetCardDetailsProps) => {
             color={"gray"}
             cursor="pointer"
             _hover={{ bg: "#200914", color: "#f91880" }}
-            onClick={() => handleDeleteTweet(index)}
+            onClick={() => deleteTweet(tweet.id)}
           >
             <FaRegTrashAlt size="1.5em" />
           </Button>

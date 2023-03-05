@@ -3,7 +3,6 @@ import { DateTime } from "luxon";
 
 export const postTweet = async () => {
   const newTweet = {
-    id: Math.floor(Math.random() * 1000),
     user: {
       avatarUrl:
         "https://cdn2.iconfinder.com/data/icons/social-flat-buttons-3/512/anonymous-512.png",
@@ -23,8 +22,7 @@ export const postTweet = async () => {
   };
 
   try {
-    const { data } = await axios.post("http://localhost:3004/tweets", newTweet);
-    return data;
+    await axios.post("http://localhost:3004/tweets", newTweet);
   } catch {
     throw new Error("Si è verificato un errore");
   }

@@ -1,14 +1,15 @@
 import { Box } from "@chakra-ui/react";
+import { TweetType } from "../types/tweetType";
 import { TweetContent } from "./TweetContent";
 import { TweetDetails } from "./TweetDetails";
 import { TweetImage } from "./TweetImage";
 import { TweetUser } from "./TweetUser";
 
 type TweetCardProps = {
-  index: number;
+  tweet: TweetType;
 };
 
-export const TweetCard = ({ index }: TweetCardProps) => {
+export const TweetCard = ({ tweet }: TweetCardProps) => {
   return (
     <Box
       borderWidth="1px"
@@ -17,11 +18,11 @@ export const TweetCard = ({ index }: TweetCardProps) => {
       p="1em"
       _hover={{ bg: "#101010" }}
     >
-      <TweetImage index={index} />
-      <Box p="1em" pb='0'>
-        <TweetUser index={index} />
-        <TweetContent index={index} />
-        <TweetDetails index={index} />
+      <TweetImage tweet={tweet} />
+      <Box p="1em" pb="0">
+        <TweetUser tweet={tweet} />
+        <TweetContent tweet={tweet} />
+        <TweetDetails tweet={tweet} />
       </Box>
     </Box>
   );
